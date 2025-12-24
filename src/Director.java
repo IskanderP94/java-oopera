@@ -1,5 +1,5 @@
 public class Director extends Person {
-    private final int numberOfShows;
+    protected int numberOfShows;
 
     public Director(String name, String surname, Gender gender,
                     int numberOfShows) {
@@ -8,7 +8,7 @@ public class Director extends Person {
     }
 
     //метод для печати инфо о режиссере
-    public static void printDirector(Director director) {
+    public void printDirector(Director director) {
         System.out.println(director.toString());
     }
 

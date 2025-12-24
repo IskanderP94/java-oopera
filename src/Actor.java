@@ -1,23 +1,20 @@
 import java.util.Objects;
 
 public class Actor extends Person {
-    private final int height;
+    protected int height;
 
     public Actor (String name, String surname, Gender gender, int height) {
         super (name, surname, gender);
         this.height = height;
     }
 
-    public int getHeight() {
-        return height;
-    }
-
-    @Override
+   @Override
     public String toString() {
         return name + " " +
-                surname + ", " +
-                gender  + ", " +
-                height + " см";
+                surname + " " +
+                "(" +
+                height + " см" +
+                ")";
     }
 
     @Override
@@ -30,8 +27,10 @@ public class Actor extends Person {
                 height == actor.height;
     }
 
+    // Ревью 1. Переопределение метода "hashCode()" приведено в соответствие с переопределенным методом "equals()":
+    // исключено поле "gender".
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, gender, height);
+        return Objects.hash(name, surname, height);
     }
 }

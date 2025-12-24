@@ -1,30 +1,30 @@
+import java.util.ArrayList;
+
 public class Theatre {
 
     public static void main(String[] args) {
 
-        Actor actor0 = new Actor("Брэд", "Питт",
-                Gender.МУЖСКОЙ, 180);
-        Actor actor1 = new Actor("Леонардо", "Ди Каприо",
-                Gender.МУЖСКОЙ, 183);
-        Actor actor2 = new Actor("Энтони", "Хопкинс",
-                Gender.МУЖСКОЙ, 175);
-        Actor actor3 = new Actor("Юрий", "Никулин", Gender.МУЖСКОЙ, 179);
+        Actor actor0 = new Actor("Брэд", "Питт", Gender.MALE, 180);
+        Actor actor1 = new Actor("Леонардо", "Ди Каприо", Gender.MALE, 183);
+        Actor actor2 = new Actor("Энтони", "Хопкинс", Gender.MALE, 175);
+        Actor actor3 = new Actor("Юрий", "Никулин", Gender.MALE, 179);
+        Actor actor4 = new Actor("Владимир", "Никулин", Gender.MALE, 176);
+        Actor actor5 = new Actor("Питер", "Питт", Gender.MALE, 178);
 
-        Director director0 = new Director("Мартин", "Скорсезе",
-                Gender.МУЖСКОЙ, 100);
-        Director director1 = new Director("Кристофер", "Нолан",
-                Gender.МУЖСКОЙ, 50);
-        MusicalShow.musicAuthor = "Эннио Морриконе";
-        Ballet.choreographer = "Вацлав Резингер";
+        Director director0 = new Director("Мартин", "Скорсезе", Gender.MALE, 100);
+        Director director1 = new Director("Кристофер", "Нолан", Gender.MALE, 50);
 
-        Show show = new Show("Преступление и наказание", 150,
-                director0);
+        Person musicAuthor = new Person("Эннио", "Морриконе", Gender.MALE);
 
-        Opera opera = new Opera("Кольцо Нибелунгов", 900, director0,"Рихард Вагнер",
-                "Цикл из четырёх немецкоязычных музыкальных эпических драм", 110);
-        Ballet ballet = new Ballet("Лебединое озеро", 140, director1,"Чайковский",
-                "Зигфрид встречает девушку-лебедя Одетту и влюбляется в неё.",
-                "Вацлав Резингер");
+        Person choreographer = new Person("Вацлав", "Резингер", Gender.MALE);
+
+        Show show = new Show("Преступление и наказание", 150, director0);
+
+        Opera opera = new Opera("Кольцо Нибелунгов", 900, director0, musicAuthor,
+                "Цикл из четырёх немецкоязычных музыкальных эпических драм", 180);
+
+        Ballet ballet = new Ballet("Лебединое озеро", 140, director1, musicAuthor,
+                "Зигфрид встречает девушку-лебедя Одетту и влюбляется в неё.", choreographer);
 
         show.addAnActor(actor0);
         show.addAnActor(actor1);
@@ -34,16 +34,20 @@ public class Theatre {
 
         ballet.addAnActor(actor0);
         ballet.addAnActor(actor2);
+        ballet.addAnActor(actor5);
 
-        show.printActors();
-        opera.printActors();
-        ballet.printActors();
+        show.printActors("Спектакль");
+        opera.printActors("Опера");
+        ballet.printActors("Балет");
 
         show.changeActor(actor3, actor0.surname);
-        show.printActors();
+        show.printActors("Спектакль");
 
         opera.changeActor(actor0, actor3.surname);
-        opera.printActors();
+        opera.printActors("Опера");
+
+        ballet.changeActor(actor4, actor0.surname);
+        ballet.printActors("Балет");
 
         opera.printLibretto();
         ballet.printLibretto();
