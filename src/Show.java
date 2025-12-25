@@ -51,23 +51,6 @@ public class Show {
         }
     }
 
-    /*public void changeActor(Actor actor, String surname) {
-        boolean isFound = false;
-        for (int i = 0; i < listOfActors.size(); i++) {
-            if (listOfActors.get(i).surname.equals(surname)) {
-                if (isFound) {
-                    System.out.println("Актёр с фамилией " + surname + " уже заменён." + "\n");
-                    continue;
-                }
-                listOfActors.set(i, actor);
-                isFound = true;
-            }
-        }
-        if (!isFound) {
-            System.out.println("Актера с фамилией " + surname + " в списке нет!");
-        }
-    }*/
-
     public void changeActor(Actor actor, String surname) {
         ArrayList<Integer> actors = new ArrayList<>();
 
