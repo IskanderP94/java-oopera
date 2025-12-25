@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class MusicalShow extends Show {
     protected Person musicAuthor;
     protected String librettoText;
@@ -12,7 +10,7 @@ public class MusicalShow extends Show {
     }
 //печатаем текст либретто
     public void printLibretto() {
-        System.out.println(librettoText);
-        System.out.println();
+        System.out.println(librettoText + "\n");
+
     }
 }

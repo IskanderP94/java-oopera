@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Show {
     protected String title;
@@ -50,7 +51,7 @@ public class Show {
         }
     }
 
-    public void changeActor(Actor actor, String surname) {
+    /*public void changeActor(Actor actor, String surname) {
         boolean isFound = false;
         for (int i = 0; i < listOfActors.size(); i++) {
             if (listOfActors.get(i).surname.equals(surname)) {
@@ -65,6 +66,45 @@ public class Show {
         if (!isFound) {
             System.out.println("Актера с фамилией " + surname + " в списке нет!");
         }
+    }*/
+
+    public void changeActor(Actor actor, String surname) {
+        ArrayList<Integer> actors = new ArrayList<>();
+
+        for (int i = 0; i < listOfActors.size(); i++) {
+            if (listOfActors.get(i).surname.equals(surname)) {
+                actors.add(i);
+            }
+        }
+
+        if (actors.isEmpty()) {
+            System.out.println("Актёра с фамилией " + surname + " в списке нет!");
+            return;
+        }
+
+        if (actors.size() == 1) {
+            listOfActors.set(actors.get(0), actor);
+            System.out.println("Актёр с фамилией " + surname + " успешно заменён.");
+        } else {
+            System.out.println("Найдено несколько актёров с фамилией " + surname + ":");
+            for (int j = 0; j < actors.size(); j++) {
+                Actor currentActor = listOfActors.get(actors.get(j));
+                System.out.println((j + 1) + ". " + currentActor.name + " " + currentActor.surname);
+            }
+            System.out.println("Введите номер для замены (1-" + actors.size() + "):");
+
+            Scanner scanner = new Scanner(System.in);
+            int choice = scanner.nextInt() - 1;
+
+            if (choice >= 0 && choice < actors.size()) {
+                listOfActors.set(actors.get(choice), actor);
+                System.out.println("Актёр успешно заменён.");
+            } else {
+                System.out.println("Неверный выбор.");
+            }
+        }
     }
 }
+
+
 
